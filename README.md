@@ -1,1 +1,1 @@
-echo "# laravel-forum"
+"# laravel-forum"
