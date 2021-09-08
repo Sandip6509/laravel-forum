@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\DiscussionsController;
+use App\Http\Controllers\RepliesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('discussions',DiscussionsController::class);
+
+Route::resource('discussions/{discussion}/replies',RepliesController::class);
+
+Route::get('users/notifications',[UsersController::class,'notifications'])->name('users.notifications');
+
+Route::post('discussions/{discussion}/replies/{reply}/mark-as-best-reply',[DiscussionsController::class,'reply'])->name('discussions.best-reply');
