@@ -16,6 +16,9 @@
 </div>
 @endforeach
 
-{{ $discussions->links() }}
+<div class="my-4">
+    {{ $discussions->links() }}
+</div>
+
 
 @endsection
